@@ -46,12 +46,10 @@ class henrylf {
   package {'stow':
     ensure => latest,
   }
-  #~> exec { 'Install dotfiles':
-    #environment => ["HOME=${homedir}"],
-    #command     => "${home}/othaDotfiles/setup.sh",
-    #logoutput   => true,
-    #user        => $user,
-    #refreshonly => true,
-  #}
-
+  ~> exec { 'Install dotfiles':
+    command     => "${home}/othaDotfiles/setup.sh",
+    logoutput   => true,
+    user        => $user,
+    refreshonly => true,
+  }
 }
