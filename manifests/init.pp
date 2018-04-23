@@ -23,7 +23,11 @@ class henrylf {
     default   => "/bin/bash"
   }
 
-  user { $user:
+  group { $user:
+    ensure     => present,
+    gid        => 1001,
+  }
+  -> user { $user:
     ensure     => present,
     uid        => 1001,
     gid        => 1001,
@@ -34,8 +38,7 @@ class henrylf {
     password   => '*',
     comment    => 'Henrylefourbe',
   }
-
-  vcsrepo { "${homedir}/othaDotfiles":
+  -> vcsrepo { "${homedir}/othaDotfiles":
     ensure   => latest,
     provider => git,
     remote   => 'origin',
@@ -43,11 +46,8 @@ class henrylf {
     user     => $user,
     source   => 'https://github.com/othalla/othaDotfiles.git',
   }
-  package {'stow':
-    ensure => latest,
-  }
   ~> exec { 'Install dotfiles':
-    command     => "${home}/othaDotfiles/setup.sh",
+    command     => "${homedir}/othaDotfiles/deploy.sh",
     logoutput   => true,
     user        => $user,
     refreshonly => true,
