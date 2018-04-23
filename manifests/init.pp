@@ -48,6 +48,7 @@ class henrylf {
   }
   ~> exec { 'Install dotfiles':
     command     => "${homedir}/othaDotfiles/deploy.sh",
+    environment => ["HOME=$homedir"],
     logoutput   => true,
     user        => $user,
     refreshonly => true,
