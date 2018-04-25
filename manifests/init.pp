@@ -53,4 +53,5 @@ class henrylf {
     user        => $user,
     refreshonly => true,
   }
+  include ::henrylf::config
 }
