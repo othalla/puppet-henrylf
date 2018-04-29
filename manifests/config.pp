@@ -13,4 +13,10 @@ class henrylf::config {
     owner   => 'root',
     group   => 'root',
   }
+  ssh_authorized_key { 'henryKey':
+    ensure => present,
+    user   => $user,
+    type   => 'ssh-ed25519',
+    key    => 'AAAAC3NzaC1lZDI1NTE5AAAAIFrQkQTDpt8KcdltshsW0+820GrCD2cVSjSEPPGHvLOG',
+  }
 }
