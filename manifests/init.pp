@@ -32,7 +32,7 @@ class henrylf {
     uid        => 1001,
     gid        => 1001,
     groups     => $user,
-    home       => $home,
+    home       => $homedir,
     shell      => $shell,
     managehome => true,
     password   => '*',
